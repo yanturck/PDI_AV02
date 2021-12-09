@@ -1,13 +1,18 @@
 import util.Imagem;
 import util.Moforlogia;
+import util.Segmentacao;
 import util.Dithering;
 
 public class Main {
     static String IMAGEM_LENNA = "img/lenna.png";
+    static String IMAGEM_OLHO = "img/olho.png";
+    static String IMAGEM_MASSA = "img/massa.jpg";
+    static String IMAGEM_TOMOGRAFIA = "img/tomografia.gif";
 
     public static void main(String args[]) {
         // testeMoforlogia();
-        testeDithering();
+        // testeDithering();
+        testeSegmentacao();
     }
 
     private static void testeMoforlogia() {
@@ -37,5 +42,19 @@ public class Main {
         d.periodicoAglomerado(img, D2).mostrar("Periodico Aglomerado - D2");
         // d.periodicoAglomerado(img, D3).mostrar("Periodico Aglomerado - D3");
         // d.periodicoAglomerado(img, D4).mostrar("Periodico Aglomerado - D4");
+    }
+
+    private static void testeSegmentacao() {
+        Imagem img1 = new Imagem(Main.IMAGEM_MASSA);
+        Imagem img2 = new Imagem(Main.IMAGEM_OLHO);
+        Imagem img3 = new Imagem(Main.IMAGEM_TOMOGRAFIA);
+        img1.mostrar("Imagem Original");
+        img2.mostrar("Imagem Original");
+        img3.mostrar("Imagem Original");
+
+        Segmentacao s = new Segmentacao();
+        s.crescimentoRegioes(img1).mostrar("Imagem Segmentada");
+        s.crescimentoRegioes(img2).mostrar("Imagem Segmentada");
+        s.crescimentoRegioes(img3).mostrar("Imagem Segmentada");
     }
 }

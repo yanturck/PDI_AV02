@@ -33,7 +33,7 @@ public class Moforlogia {
         return new Imagem(matOut);
     }
 
-    public Imagem dilatacao(Imagem in, int ee[][]) {
+    public static Imagem dilatacao(Imagem in, int ee[][]) {
         int alt = in.getAltura();
         int larg = in.getLargura();
         int nCanais = in.getNCanais();
