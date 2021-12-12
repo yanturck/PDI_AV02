@@ -41,13 +41,11 @@ public class Segmentacao {
             }
         }
 
-        System.out.println(histPico);
-
         // Limiar
         for (int c = 0; c < nCanais; c++) {
             for (int y = 0; y < alt; y++) {
                 for (int x = 0; x < larg; x++) {
-                    if(matIn[c][y][x] < histPico) matOut[c][y][x] = BLACK;
+                    if(matIn[c][y][x] < 215) matOut[c][y][x] = BLACK;
                     else matOut[c][y][x] = WHITE;
                 }
             }

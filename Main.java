@@ -1,60 +1,100 @@
+import java.awt.event.ActionEvent;
+
 import util.Imagem;
 import util.Moforlogia;
+import util.MoforlogiaBin;
 import util.Segmentacao;
 import util.Dithering;
 
 public class Main {
-    static String IMAGEM_LENNA = "img/lenna.png";
+    static String IMAGEM_B = "img/b.png";
+    public static String IMAGEM_LENNA = "img/lenna.png";
     static String IMAGEM_OLHO = "img/olho.png";
     static String IMAGEM_MASSA = "img/massa.jpg";
     static String IMAGEM_TOMOGRAFIA = "img/tomografia.gif";
 
     public static void main(String args[]) {
-        // testeMoforlogia();
-        // testeDithering();
-        testeSegmentacao();
+        // menuSegmentacao();
+        new Menu();
     }
 
-    private static void testeMoforlogia() {
+    public static void menuMorfologia(int opc) {
         Imagem img = new Imagem(Main.IMAGEM_LENNA);
         img.mostrar("Imagem Original");
         Moforlogia mb = new Moforlogia();
         int [][]ee = {{255, 255, 255},{255, 255, 255},{255, 255, 255}};
-        mb.erosao(img, ee).mostrar("Erosão");
-        mb.dilatacao(img, ee).mostrar("Dilatação");
-        mb.abertura(img, ee).mostrar("Abertura");
-        mb.fechamento(img, ee).mostrar("Fechamento");
-        mb.gradiente(img, ee).mostrar("Gradiente");
-        mb.smoothing(img, ee).mostrar("Smoothing");
+
+        switch(opc) {
+            case 1: mb.erosao(img, ee).mostrar("Erosão");
+            break;
+            case 2: mb.dilatacao(img, ee).mostrar("Dilatação");
+            break;
+            case 3: mb.abertura(img, ee).mostrar("Abertura");
+            break;
+            case 4: mb.fechamento(img, ee).mostrar("Fechamento");
+            break;
+            case 5: mb.gradiente(img, ee).mostrar("Gradiente");
+            break;
+            case 6: mb.smoothing(img, ee).mostrar("Smoothing");
+            break;
+        }
     }
 
-    private static void testeDithering() {
+    public static void menuMorfologiaBin(int opc) {
+        Imagem img = new Imagem(Main.IMAGEM_B);
+        img.mostrar("Imagem Original");
+        MoforlogiaBin mb = new MoforlogiaBin();
+        int [][]ee = {{255, 255, 255},{255, 255, 255},{255, 255, 255}};
+
+        switch(opc) {
+            case 1: mb.erosao(img, ee).mostrar("Erosão");
+            break;
+            case 2: mb.dilatacao(img, ee).mostrar("Dilatação");
+            break;
+            case 3: mb.abertura(img, ee).mostrar("Abertura");
+            break;
+            case 4: mb.fechamento(img, ee).mostrar("Fechamento");
+            break;
+            case 5: mb.bordaInterna(img, ee).mostrar("Borda Interna");
+            break;
+            case 6: mb.bordaExterna(img, ee).mostrar("Borda Externa");
+            break;
+            case 7: mb.bordaExterna(img, ee).mostrar("Preenchimento de Regiões"); // falta
+            break;
+        }
+    }
+
+    public static void menuDithering(int opc) {
         Imagem img = new Imagem(Main.IMAGEM_LENNA);
         img.mostrar("Imagem Original");
         Dithering d = new Dithering();
         int[][] D2 = {{0, 2},{3, 1}};
         int[][] D3 = {{6, 8, 4},{1, 0, 3},{5, 2, 7}};
         int[][] D4 = {{0, 8, 2, 10},{12, 4, 14, 6},{3, 11, 1, 9},{15, 7, 13, 5}};
-        d.aperiodico(img).mostrar("Aperiodica");
-        d.periodicoDisperso(img, D2).mostrar("Periodico Disperso - D2");
-        // d.periodicoDisperso(img, D3).mostrar("Periodico Disperso - D3");
-        // d.periodicoDisperso(img, D4).mostrar("Periodico Disperso - D4");
-        d.periodicoAglomerado(img, D2).mostrar("Periodico Aglomerado - D2");
-        // d.periodicoAglomerado(img, D3).mostrar("Periodico Aglomerado - D3");
-        // d.periodicoAglomerado(img, D4).mostrar("Periodico Aglomerado - D4");
+
+        switch(opc) {
+            case 1: d.periodicoDisperso(img, D2).mostrar("Periodico Disperso - D2");
+            break;
+            case 2: d.periodicoDisperso(img, D3).mostrar("Periodico Disperso - D3");
+            break;
+            case 3: d.periodicoDisperso(img, D4).mostrar("Periodico Disperso - D4");
+            break;
+            case 4: d.periodicoAglomerado(img, D2).mostrar("Periodico Aglomerado - D2");
+            break;
+            case 5: d.periodicoAglomerado(img, D3).mostrar("Periodico Aglomerado - D3");
+            break;
+            case 6: d.periodicoAglomerado(img, D4).mostrar("Periodico Aglomerado - D4");
+            break;
+            case 7: d.aperiodico(img).mostrar("Aperiodica");
+            break;
+        }
     }
 
-    private static void testeSegmentacao() {
+    public static void menuSegmentacao() {
         Imagem img1 = new Imagem(Main.IMAGEM_MASSA);
-        Imagem img2 = new Imagem(Main.IMAGEM_OLHO);
-        Imagem img3 = new Imagem(Main.IMAGEM_TOMOGRAFIA);
         img1.mostrar("Imagem Original");
-        img2.mostrar("Imagem Original");
-        img3.mostrar("Imagem Original");
 
         Segmentacao s = new Segmentacao();
         s.crescimentoRegioes(img1).mostrar("Imagem Segmentada");
-        s.crescimentoRegioes(img2).mostrar("Imagem Segmentada");
-        s.crescimentoRegioes(img3).mostrar("Imagem Segmentada");
     }
 }
