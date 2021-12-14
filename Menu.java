@@ -25,6 +25,7 @@ public class Menu extends JFrame{
     JMenuItem i7m1 = new JMenuItem("Aperiódico");
 
     JMenu m2 = new JMenu("Iterpolação");
+    JMenuItem i1m2 = new JMenuItem("Vizinhos mais Próximos");
 
     JMenu m3 = new JMenu("Moforlogia Binária");
     JMenuItem i1m3 = new JMenuItem("Erosõa");
@@ -95,9 +96,10 @@ public class Menu extends JFrame{
         });
 // ==========================================================================
         barra.add(m2);
-        m2.addActionListener(new ActionListener() {
+        m2.add(i1m2);
+        i1m2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Main.menuDithering(1);
+                Main.menuInterpolação();
             }
         });
 // ==========================================================================

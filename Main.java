@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 
 import util.Imagem;
+import util.Interpolacao;
 import util.Moforlogia;
 import util.MoforlogiaBin;
 import util.Segmentacao;
@@ -38,6 +39,12 @@ public class Main {
             case 6: mb.smoothing(img, ee).mostrar("Smoothing");
             break;
         }
+    }
+
+    public static void menuInterpolação() {
+        Imagem img = new Imagem(Main.IMAGEM_LENNA);
+        img.mostrar("Imagem Original");
+        Interpolacao.vizinhosProximos(img, 2).mostrar("Imagem Ampliada - 2x");
     }
 
     public static void menuMorfologiaBin(int opc) {
