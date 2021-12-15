@@ -102,11 +102,7 @@ public class MoforlogiaBin {
         int larg = in.getLargura();
         Imagem complementoIn = complemento(in);
         int matOut[][][] = new int[1][alt][larg];
-        int matX[][][] = new int[1][alt][larg];
-
-        for (int x = 0; x < larg; x++) {
-            matX = interseccao(dilatacao(new Imagem(matX), ee), complementoIn) ;
-        }
+        int matX[][][] = interseccao(dilatacao(in, ee), complementoIn);
         
         matOut = uniao(new Imagem(matX), in);
 

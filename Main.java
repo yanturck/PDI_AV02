@@ -1,5 +1,3 @@
-import java.awt.event.ActionEvent;
-
 import util.Imagem;
 import util.Interpolacao;
 import util.Moforlogia;
@@ -66,7 +64,7 @@ public class Main {
             break;
             case 6: mb.bordaExterna(img, ee).mostrar("Borda Externa");
             break;
-            case 7: mb.bordaExterna(img, ee).mostrar("Preenchimento de Regiões"); // falta
+            case 7: mb.preenchimentoRegioes(img, ee).mostrar("Preenchimento de Regiões");
             break;
         }
     }

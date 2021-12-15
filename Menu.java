@@ -1,19 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Action;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class Menu extends JFrame{
     JMenuBar barra = new JMenuBar();
-
-    ImageIcon img = new ImageIcon(getClass().getResource(Main.IMAGEM_LENNA));
-    JLabel labelImg = new JLabel(img);
 
     JMenu m1 = new JMenu("Dithering");
     JMenuItem i1m1 = new JMenuItem("Periódico Disperso - D2");
@@ -179,9 +173,9 @@ public class Menu extends JFrame{
             }
         });
         m4.add(i6m4);
-        i5m4.addActionListener(new ActionListener() {
+        i6m4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Main.menuMorfologia(5);
+                Main.menuMorfologia(6);
             }
         });
 // ==========================================================================
@@ -193,10 +187,8 @@ public class Menu extends JFrame{
             }
         });
 
-        add(labelImg);
-
         setTitle("Menu");
-        setSize(600, 400);
+        setSize(525, 75);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);

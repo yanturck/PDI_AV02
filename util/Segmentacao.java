@@ -1,7 +1,5 @@
 package util;
 
-import java.sql.Blob;
-
 // crescimento de regiões
 
 public class Segmentacao {
